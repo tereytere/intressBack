@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SignIn{% endblock %}
+
+{% block body %}
+    <h1>Edit SignIn</h1>
+
+    {{ include('sign_in/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_sign_in_index') }}">back to list</a>
+
+    {{ include('sign_in/_delete_form.html.twig') }}
+{% endblock %}
