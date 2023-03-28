@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SignIn{% endblock %}
+
+{% block body %}
+    <h1>SignIn</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sign_in.id }}</td>
+            </tr>
+            <tr>
+                <th>Holidays</th>
+                <td>{{ sign_in.holidays }}</td>
+            </tr>
+            <tr>
+                <th>Workshops</th>
+                <td>{{ sign_in.workshops }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ sign_in.user }}</td>
+            </tr>
+            <tr>
+                <th>TimeStart</th>
+                <td>{{ sign_in.timeStart }}</td>
+            </tr>
+            <tr>
+                <th>TimeStop</th>
+                <td>{{ sign_in.timeStop }}</td>
+            </tr>
+            <tr>
+                <th>TimeFinish</th>
+                <td>{{ sign_in.timeFinish }}</td>
+            </tr>
+            <tr>
+                <th>HourCount</th>
+                <td>{{ sign_in.hourCount }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sign_in_index') }}">back to list</a>
+
+    <a href="{{ path('app_sign_in_edit', {'id': sign_in.id}) }}">edit</a>
+
+    {{ include('sign_in/_delete_form.html.twig') }}
+{% endblock %}
