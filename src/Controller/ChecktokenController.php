@@ -29,7 +29,7 @@ class ChecktokenController extends AbstractController
         if($request->query->get('bearer')) {
             $token = $request->query->get('bearer');
         }else {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('login');
         }
 
         $tokenParts = explode(".", $token);  
@@ -47,7 +47,7 @@ class ChecktokenController extends AbstractController
 
         //dump($user->getRoles());die;
         if(!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('login');
         }
 
         $response = new Response();

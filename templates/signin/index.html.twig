@@ -9,9 +9,6 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Holidays</th>
-                <th>Workshops</th>
-                <th>User</th>
                 <th>TimeStart</th>
                 <th>TimeStop</th>
                 <th>TimeFinish</th>
@@ -23,16 +20,13 @@
         {% for signin in signin %}
             <tr>
                 <td>{{ signin.id }}</td>
-                <td>{{ signin.holidays }}</td>
-                <td>{{ signin.workshops }}</td>
-                <td>{{ signin.user }}</td>
                 <td>{{ signin.timeStart }}</td>
                 <td>{{ signin.timeStop }}</td>
                 <td>{{ signin.timeFinish }}</td>
                 <td>{{ signin.hourCount }}</td>
                 <td>
-                    <a href="{{ path('app_signin_show', {'id': signin.id}) }}">show</a>
-                    <a href="{{ path('app_signin_edit', {'id': signin.id}) }}">edit</a>
+                    <a href="{{ path('signin_show', {'id': signin.id}) }}">show</a>
+                    <a href="{{ path('signin_edit', {'id': signin.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_signin_new') }}">Create new</a>
+    <a href="{{ path('signin_new') }}">Create new</a>
 {% endblock %}

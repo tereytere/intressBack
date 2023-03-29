@@ -12,9 +12,6 @@ class SignInType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('holidays')
-            ->add('workshops')
-            ->add('user')
             ->add('timeStart')
             ->add('timeStop')
             ->add('timeFinish')

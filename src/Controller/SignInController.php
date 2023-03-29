@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/signin')]
 class SignInController extends AbstractController
 {
-    #[Route('/', name: 'app_signin_index', methods: ['GET'])]
+    #[Route('/', name: 'signin_index', methods: ['GET'])]
     public function index(SignInRepository $signInRepository): Response
     {
         return $this->render('signin/index.html.twig', [
@@ -21,7 +21,7 @@ class SignInController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_signin_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'signin_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SignInRepository $signInRepository): Response
     {
         $signIn = new SignIn();
@@ -31,7 +31,7 @@ class SignInController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $signInRepository->save($signIn, true);
 
-            return $this->redirectToRoute('app_signin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('signin_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('signin/new.html.twig', [
@@ -40,7 +40,7 @@ class SignInController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_signin_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'signin_show', methods: ['GET'])]
     public function show(SignIn $signIn): Response
     {
         return $this->render('signin/show.html.twig', [
@@ -48,7 +48,7 @@ class SignInController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_sign_in_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'signin_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, SignIn $signIn, SignInRepository $signInRepository): Response
     {
         $form = $this->createForm(SignInType::class, $signIn);
@@ -57,7 +57,7 @@ class SignInController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $signInRepository->save($signIn, true);
 
-            return $this->redirectToRoute('app_signin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('signin_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('signin/edit.html.twig', [
@@ -66,13 +66,13 @@ class SignInController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_signin_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'signin_delete', methods: ['POST'])]
     public function delete(Request $request, SignIn $signIn, SignInRepository $signInRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$signIn->getId(), $request->request->get('_token'))) {
             $signInRepository->remove($signIn, true);
         }
 
-        return $this->redirectToRoute('app_signin_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('signin_index', [], Response::HTTP_SEE_OTHER);
     }
 }

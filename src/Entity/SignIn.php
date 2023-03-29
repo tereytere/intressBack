@@ -14,15 +14,6 @@ class SignIn
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $holidays = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $workshops = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $user = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $timeStart = null;
 
     #[ORM\Column(length: 255)]
@@ -37,42 +28,6 @@ class SignIn
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getHolidays(): ?string
-    {
-        return $this->holidays;
-    }
-
-    public function setHolidays(string $holidays): self
-    {
-        $this->holidays = $holidays;
-
-        return $this;
-    }
-
-    public function getWorkshops(): ?string
-    {
-        return $this->workshops;
-    }
-
-    public function setWorkshops(string $workshops): self
-    {
-        $this->workshops = $workshops;
-
-        return $this;
-    }
-
-    public function getUser(): ?string
-    {
-        return $this->user;
-    }
-
-    public function setUser(string $user): self
-    {
-        $this->user = $user;
-
-        return $this;
     }
 
     public function getTimeStart(): ?string

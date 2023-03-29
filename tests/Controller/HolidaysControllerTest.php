@@ -44,8 +44,6 @@ class HolidaysControllerTest extends WebTestCase
         self::assertResponseStatusCodeSame(200);
 
         $this->client->submitForm('Save', [
-            'holiday[signIn]' => 'Testing',
-            'holiday[user]' => 'Testing',
             'holiday[date]' => 'Testing',
         ]);
 
@@ -58,8 +56,6 @@ class HolidaysControllerTest extends WebTestCase
     {
         $this->markTestIncomplete();
         $fixture = new Holidays();
-        $fixture->setSignIn('My Title');
-        $fixture->setUser('My Title');
         $fixture->setDate('My Title');
 
         $this->repository->save($fixture, true);
@@ -76,8 +72,6 @@ class HolidaysControllerTest extends WebTestCase
     {
         $this->markTestIncomplete();
         $fixture = new Holidays();
-        $fixture->setSignIn('My Title');
-        $fixture->setUser('My Title');
         $fixture->setDate('My Title');
 
         $this->repository->save($fixture, true);
@@ -85,8 +79,6 @@ class HolidaysControllerTest extends WebTestCase
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
         $this->client->submitForm('Update', [
-            'holiday[signIn]' => 'Something New',
-            'holiday[user]' => 'Something New',
             'holiday[date]' => 'Something New',
         ]);
 
@@ -94,8 +86,6 @@ class HolidaysControllerTest extends WebTestCase
 
         $fixture = $this->repository->findAll();
 
-        self::assertSame('Something New', $fixture[0]->getSignIn());
-        self::assertSame('Something New', $fixture[0]->getUser());
         self::assertSame('Something New', $fixture[0]->getDate());
     }
 
@@ -106,8 +96,6 @@ class HolidaysControllerTest extends WebTestCase
         $originalNumObjectsInRepository = count($this->repository->findAll());
 
         $fixture = new Holidays();
-        $fixture->setSignIn('My Title');
-        $fixture->setUser('My Title');
         $fixture->setDate('My Title');
 
         $this->repository->save($fixture, true);

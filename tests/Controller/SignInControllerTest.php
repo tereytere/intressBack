@@ -44,13 +44,10 @@ class SignInControllerTest extends WebTestCase
         self::assertResponseStatusCodeSame(200);
 
         $this->client->submitForm('Save', [
-            'sign_in[holidays]' => 'Testing',
-            'sign_in[workshops]' => 'Testing',
-            'sign_in[user]' => 'Testing',
-            'sign_in[timeStart]' => 'Testing',
-            'sign_in[timeStop]' => 'Testing',
-            'sign_in[timeFinish]' => 'Testing',
-            'sign_in[hourCount]' => 'Testing',
+            'signin[timeStart]' => 'Testing',
+            'signin[timeStop]' => 'Testing',
+            'signin[timeFinish]' => 'Testing',
+            'signin[hourCount]' => 'Testing',
         ]);
 
         self::assertResponseRedirects('/sign/in/');
@@ -62,9 +59,6 @@ class SignInControllerTest extends WebTestCase
     {
         $this->markTestIncomplete();
         $fixture = new SignIn();
-        $fixture->setHolidays('My Title');
-        $fixture->setWorkshops('My Title');
-        $fixture->setUser('My Title');
         $fixture->setTimeStart('My Title');
         $fixture->setTimeStop('My Title');
         $fixture->setTimeFinish('My Title');
@@ -84,9 +78,6 @@ class SignInControllerTest extends WebTestCase
     {
         $this->markTestIncomplete();
         $fixture = new SignIn();
-        $fixture->setHolidays('My Title');
-        $fixture->setWorkshops('My Title');
-        $fixture->setUser('My Title');
         $fixture->setTimeStart('My Title');
         $fixture->setTimeStop('My Title');
         $fixture->setTimeFinish('My Title');
@@ -97,22 +88,16 @@ class SignInControllerTest extends WebTestCase
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
         $this->client->submitForm('Update', [
-            'sign_in[holidays]' => 'Something New',
-            'sign_in[workshops]' => 'Something New',
-            'sign_in[user]' => 'Something New',
-            'sign_in[timeStart]' => 'Something New',
-            'sign_in[timeStop]' => 'Something New',
-            'sign_in[timeFinish]' => 'Something New',
-            'sign_in[hourCount]' => 'Something New',
+            'signin[timeStart]' => 'Something New',
+            'signin[timeStop]' => 'Something New',
+            'signin[timeFinish]' => 'Something New',
+            'signin[hourCount]' => 'Something New',
         ]);
 
         self::assertResponseRedirects('/sign/in/');
 
         $fixture = $this->repository->findAll();
 
-        self::assertSame('Something New', $fixture[0]->getHolidays());
-        self::assertSame('Something New', $fixture[0]->getWorkshops());
-        self::assertSame('Something New', $fixture[0]->getUser());
         self::assertSame('Something New', $fixture[0]->getTimeStart());
         self::assertSame('Something New', $fixture[0]->getTimeStop());
         self::assertSame('Something New', $fixture[0]->getTimeFinish());
@@ -126,9 +111,6 @@ class SignInControllerTest extends WebTestCase
         $originalNumObjectsInRepository = count($this->repository->findAll());
 
         $fixture = new SignIn();
-        $fixture->setHolidays('My Title');
-        $fixture->setWorkshops('My Title');
-        $fixture->setUser('My Title');
         $fixture->setTimeStart('My Title');
         $fixture->setTimeStop('My Title');
         $fixture->setTimeFinish('My Title');

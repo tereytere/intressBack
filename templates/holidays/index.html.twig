@@ -9,8 +9,6 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>SignIn</th>
-                <th>User</th>
                 <th>Date</th>
                 <th>actions</th>
             </tr>
@@ -19,12 +17,10 @@
         {% for holiday in holidays %}
             <tr>
                 <td>{{ holiday.id }}</td>
-                <td>{{ holiday.signIn }}</td>
-                <td>{{ holiday.user }}</td>
                 <td>{{ holiday.date }}</td>
                 <td>
-                    <a href="{{ path('app_holidays_show', {'id': holiday.id}) }}">show</a>
-                    <a href="{{ path('app_holidays_edit', {'id': holiday.id}) }}">edit</a>
+                    <a href="{{ path('holidays_show', {'id': holiday.id}) }}">show</a>
+                    <a href="{{ path('holidays_edit', {'id': holiday.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_holidays_new') }}">Create new</a>
+    <a href="{{ path('holidays_new') }}">Create new</a>
 {% endblock %}

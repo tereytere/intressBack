@@ -41,18 +41,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $rol = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $workshops = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $signIn = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $holidays = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $documents = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -186,54 +174,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRol(string $rol): self
     {
         $this->rol = $rol;
-
-        return $this;
-    }
-
-    public function getWorkshops(): ?string
-    {
-        return $this->workshops;
-    }
-
-    public function setWorkshops(string $workshops): self
-    {
-        $this->workshops = $workshops;
-
-        return $this;
-    }
-
-    public function getSignIn(): ?string
-    {
-        return $this->signIn;
-    }
-
-    public function setSignIn(string $signIn): self
-    {
-        $this->signIn = $signIn;
-
-        return $this;
-    }
-
-    public function getHolidays(): ?string
-    {
-        return $this->holidays;
-    }
-
-    public function setHolidays(string $holidays): self
-    {
-        $this->holidays = $holidays;
-
-        return $this;
-    }
-
-    public function getDocuments(): ?string
-    {
-        return $this->documents;
-    }
-
-    public function setDocuments(string $documents): self
-    {
-        $this->documents = $documents;
 
         return $this;
     }

@@ -12,23 +12,15 @@
                 <td>{{ holiday.id }}</td>
             </tr>
             <tr>
-                <th>SignIn</th>
-                <td>{{ holiday.signIn }}</td>
-            </tr>
-            <tr>
-                <th>User</th>
-                <td>{{ holiday.user }}</td>
-            </tr>
-            <tr>
                 <th>Date</th>
                 <td>{{ holiday.date }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_holidays_index') }}">back to list</a>
+    <a href="{{ path('holidays_index') }}">back to list</a>
 
-    <a href="{{ path('app_holidays_edit', {'id': holiday.id}) }}">edit</a>
+    <a href="{{ path('holidays_edit', {'id': holiday.id}) }}">edit</a>
 
     {{ include('holidays/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('app_sign_in_delete', {'id': sign_in.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ sign_in.id) }}">
+<form method="post" action="{{ path('signin_delete', {'id': signin.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ signin.id) }}">
     <button class="btn">Delete</button>
 </form>

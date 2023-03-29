@@ -16,10 +16,6 @@
                 <th>Surname</th>
                 <th>Image</th>
                 <th>Rol</th>
-                <th>Workshops</th>
-                <th>SignIn</th>
-                <th>Holidays</th>
-                <th>Documents</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -34,13 +30,9 @@
                 <td>{{ user.surname }}</td>
                 <td>{{ user.image }}</td>
                 <td>{{ user.rol }}</td>
-                <td>{{ user.workshops }}</td>
-                <td>{{ user.signIn }}</td>
-                <td>{{ user.holidays }}</td>
-                <td>{{ user.documents }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -51,5 +43,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+    <a href="{{ path('user_new') }}">Create new</a>
 {% endblock %}
