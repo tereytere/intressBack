@@ -25,6 +25,10 @@ class SignIn
     #[ORM\Column(length: 255)]
     private ?string $hourCount = null;
 
+    #[ORM\ManyToOne(inversedBy: 'signin')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +78,18 @@ class SignIn
     public function setHourCount(string $hourCount): self
     {
         $this->hourCount = $hourCount;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

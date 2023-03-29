@@ -43,9 +43,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Documents::class)]
     private Collection $documents;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Workshops::class)]
+    private Collection $workshops;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: SignIn::class)]
+    private Collection $signin;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Holidays::class)]
+    private Collection $holidays;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
+        $this->workshops = new ArrayCollection();
+        $this->signin = new ArrayCollection();
+        $this->holidays = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -197,6 +209,96 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($document->getUser() === $this) {
                 $document->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Workshops>
+     */
+    public function getWorkshops(): Collection
+    {
+        return $this->workshops;
+    }
+
+    public function addWorkshop(Workshops $workshop): self
+    {
+        if (!$this->workshops->contains($workshop)) {
+            $this->workshops->add($workshop);
+            $workshop->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkshop(Workshops $workshop): self
+    {
+        if ($this->workshops->removeElement($workshop)) {
+            // set the owning side to null (unless already changed)
+            if ($workshop->getUser() === $this) {
+                $workshop->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SignIn>
+     */
+    public function getSignin(): Collection
+    {
+        return $this->signin;
+    }
+
+    public function addSignin(SignIn $signin): self
+    {
+        if (!$this->signin->contains($signin)) {
+            $this->signin->add($signin);
+            $signin->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSignin(SignIn $signin): self
+    {
+        if ($this->signin->removeElement($signin)) {
+            // set the owning side to null (unless already changed)
+            if ($signin->getUser() === $this) {
+                $signin->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Holidays>
+     */
+    public function getHolidays(): Collection
+    {
+        return $this->holidays;
+    }
+
+    public function addHoliday(Holidays $holiday): self
+    {
+        if (!$this->holidays->contains($holiday)) {
+            $this->holidays->add($holiday);
+            $holiday->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHoliday(Holidays $holiday): self
+    {
+        if ($this->holidays->removeElement($holiday)) {
+            // set the owning side to null (unless already changed)
+            if ($holiday->getUser() === $this) {
+                $holiday->setUser(null);
             }
         }
 
