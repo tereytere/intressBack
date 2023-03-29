@@ -20,6 +20,10 @@ class Documents
     #[ORM\Column(length: 255)]
     private ?string $Description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'documents')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +41,12 @@ class Documents
         return $this;
     }
 
+    // public function __toString()
+    // {
+    //     $this->getDate();
+    //     $this->getDescription();
+    // }
+
     public function getDescription(): ?string
     {
         return $this->Description;
@@ -45,6 +55,18 @@ class Documents
     public function setDescription(string $Description): self
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

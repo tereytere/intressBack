@@ -18,7 +18,6 @@ class UserType extends AbstractType
             ->add('name')
             ->add('surname')
             ->add('image')
-            ->add('rol')
         ;
     }
 
